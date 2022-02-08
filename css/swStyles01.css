@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Aurebesh';
+    src:url('webfonts_Aurebesh/Aurebesh.ttf.woff') format('woff'),
+        url('webfonts_Aurebesh/Aurebesh.ttf.svg#Aurebesh') format('svg'),
+        url('webfonts_Aurebesh/Aurebesh.ttf.eot'),
+        url('webfonts_Aurebesh/Aurebesh.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
 #map 
 { 
 	/* height: 180px; */
@@ -22,11 +32,59 @@ html, body
 
 .leaflet-popup-content-wrapper
 {
-	border-radius:  25px;
+	border-radius: 25px;
 	min-width:  200px;
+	color: #ffffff;
+    border: 2px solid #ffffff;
+    background-color: rgba(0,0,0,.5);
+	min-height: 50px;
+}
+
+.leaflet-popup-content
+{	
+	margin: 5px 15px 5px 10px;
+	/*display: flex;*/
+	overflow: hidden;
+
 }
 
 .leaflet-popup-pane .leaflet-popup .leaflet-popup-close-button
 {
 	padding: 7px 25px 0 0;
+}
+
+.leaflet-popup-content-left, .leaflet-popup-content-right, .leaflet-popup-content-top, .leaflet-popup-content-bottom
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.leaflet-popup-content-left, .leaflet-popup-content-right
+{
+    float: left;
+}
+
+.leaflet-popup-content-left
+{
+	width: 25px;
+	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	/*flex: .25;*/
+	font-size: large;
+	font-weight: bolder;
+    padding-top: 0.2em;	
+    /*color: #00ff00;*/
+}
+
+.leaflet-popup-content-right
+{
+	width: 84%;
+	/*flex: 1;*/
+
+}
+
+.leaflet-popup-content-bottom
+{
+
+	font-family: 'Aurebesh';
+	font-size:  5.5pt;
 }
