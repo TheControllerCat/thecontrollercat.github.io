@@ -1,3 +1,5 @@
+/* ============================== Cutom Font Inclusion ============================== */
+
 @font-face {
     font-family: 'Aurebesh';
     src:url('webfonts_Aurebesh/Aurebesh.ttf.woff') format('woff'),
@@ -50,6 +52,8 @@
     font-style: normal;
 }
 
+/* ============================== Page Styling ============================== */
+
 #map 
 { 
 	/* height: 180px; */
@@ -61,6 +65,87 @@ html, body
 	height: 100%;
 	margin: 0;
 }
+
+.dropShadowText, 
+.aurabesh_location_bar div, 
+.aurabesh_location_bar div div span,
+.aurabesh_planet_bar div, 
+.aurabesh_planet_bar div div div 
+{
+	text-shadow: 1px 1px 3px #000000;
+}
+
+/* ============================== Zoom Control Styling ============================== */
+
+.leaflet-top
+{
+	top:  37%;	
+}
+
+.leaflet-touch .leaflet-bar a:first-child 
+{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-color: #ffffff;
+}
+
+.leaflet-touch .leaflet-bar a:last-child 
+{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.leaflet-touch .leaflet-bar a:first-child 
+.leaflet-touch .leaflet-bar a:last-child 
+{
+    border-width: 3px;
+    border-color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.leaflet-bar a.leaflet-disabled 
+{
+    cursor: default;
+    /* background-color: #f4f4f4; */
+    background-color: rgba(0,0,0,.5);
+    color: #bbb;
+}
+
+.leaflet-bar a, .leaflet-bar a:hover 
+{
+    /* background-color: #fff; */
+    background-color: rgba(0,0,0,.5);
+    /* border-bottom: 1px solid #ccc; */
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.leaflet-touch .leaflet-bar a 
+{
+	width: 30px;
+	height: 32px;
+	line-height: 27px;
+	border-style: solid;
+	border-color: #ffffff;
+	border-width: 0px 2px 0px 2px;
+	}
+
+.leaflet-touch .leaflet-bar a:nth-child(1) 
+{
+	border-top: 2px solid #ffffff;
+}
+
+.leaflet-touch .leaflet-bar a:nth-child(2) 
+{
+	border-bottom: 2px solid #ffffff;
+}
+
+/* ============================== Popup Styling ============================== */
 		
 .leaflet-container 
 {
@@ -84,9 +169,10 @@ html, body
 
 .leaflet-popup-content
 {	
-	margin: 7px 15px 5px 10px;
-	/*display: flex;*/
+	/*margin: 7px 15px 5px 10px;
+	display: flex;*/
 	overflow: hidden;
+	margin: 7px 15px 5px 10px;
 
 }
 
@@ -108,11 +194,15 @@ html, body
 
 .leaflet-popup-content-left
 {
+	
 	width: 25px;
 	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 	font-size: large;
 	font-weight: bolder;
-    padding-top: 0.2em;	
+    padding-top: 0.05em;	
+    /*font: 3em 'RogueAF', "Helvetica Neue", Arial, Helvetica, sans-serif;
+    line-height: .5;
+    width: 35px;*/
 }
 
 .leaflet-popup-content-right
@@ -138,6 +228,8 @@ html, body
 	font-size:  5.5pt;
 }
 
+/* ============================== Aurebesh Styling - Bottom Bar ============================== */
+
 .aurabesh_bottom_bar
 {
 	width:  100%;
@@ -151,12 +243,20 @@ html, body
     color: #ffffff;
     display: flex;
     flex-direction: row; 
+	flex-wrap: wrap    
 }
 
 .aurabesh_bottom_bar_child
 {
 	text-align: center;
 	margin: auto;
+    display: flex;
+    flex-direction: row; 	
+}
+
+.aurabesh_bottom_bar_child_emptySmall
+{
+	flex: .25;
 }
 
 .aurabesh_bottom_bar_child_1
@@ -169,24 +269,35 @@ html, body
 	flex: 2;
 }
 
-.aurabesh_bottom_bar_child span:nth-child(1)
-{
-	font: 1.33em/1.5 "RogueAF", "SerifGothicStd-Bold";
-}
-
-.aurabesh_bottom_bar_child span:nth-child(2)
-{
-	font: 1em/1.5 "Aurebesh", "SerifGothicStd-Bold";
-}
-
 .aurabesh_bottom_bar_child_empty
 {
-	flex: 3;
+	flex: 1.5;
 }
+
+.aurabesh_bottom_bar_child span:nth-child(1),
+.aurabesh_bottom_bar_child div:nth-child(1)
+{
+	font: 1.5em "RogueAF", "SerifGothicStd-Bold";
+	flex: .33;
+	line-height: .75;
+}
+
+.aurabesh_bottom_bar_child span:nth-child(2),
+.aurabesh_bottom_bar_child div:nth-child(2)
+{
+	font: 1em "Aurebesh", "SerifGothicStd-Bold";
+	flex: 2;
+	text-align: left;
+	padding-left: .25em;
+}
+
+
+
+/* ============================== Aurebesh Styling - Location Bar ============================== */
 
 .aurabesh_location_bar
 {
-	bottom: 75px;
+	bottom: 66px;
 	left: 25px;	
 	position: absolute;	
 	width:  33%;
@@ -198,6 +309,8 @@ html, body
     display: flex;
     flex-direction: column;
     align-items: stretch;
+
+    min-width: 450px;
 }
 
 .aurabesh_location_bar div
@@ -209,8 +322,9 @@ html, body
 {
 	color: #ffffff;
 	flex: 2;
-	font: 2.5em/1.5 "SerifGothicStd-Bold";
+	font: 2.15em "SerifGothicStd-Bold";
 	text-transform: uppercase;
+	line-height: .85em;
 }
 
 .aurabesh_location_bar .aurabesh_location_bar_aurebesh, 
@@ -222,30 +336,19 @@ html, body
 
 .aurabesh_location_bar .aurabesh_location_bar_aurebesh
 {
-	flex: 2;
-	font: 0.99em/1.5 "Aurebesh", "SerifGothicStd-Bold";
+	flex: 1;
+	font: 0.99em "Aurebesh", "SerifGothicStd-Bold";
 	text-transform: uppercase;
 }
 
 .aurabesh_location_bar .aurabesh_location_bar_hrline
 {
-	/*flex-shrink: 2;*/
-	flex: 1;
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_hrline hr
-{
-	margin: 0px;
-	padding: 0px;
-	width:10%;
-	height:4px;
-	color:#B0C4DE;
-	background-color:#B0C4DE;
+	flex: .5;
 }
 
 .aurabesh_location_bar .aurabesh_location_bar_details
 {
-	flex: 2;
+	flex: 1;
 	display: flex;
     flex-direction: row; 
 }
@@ -253,15 +356,113 @@ html, body
 .aurabesh_location_bar .aurabesh_location_bar_details div
 {
 	flex: 1;
+	display: flex;
+	flex-direction: row;
 }
 
-.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(1)
+.aurabesh_location_bar .aurabesh_location_bar_details div:nth-child(4)
 {
-	font: 1.0em/1.5 "RogueAF", "SerifGothicStd-Bold";
+	flex: 2;
 }
 
-.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(2)
+.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(1),
+.aurabesh_location_bar .aurabesh_location_bar_details div div:nth-child(1)
 {
-	font: 0.75em/1.5 "Aurebesh", "SerifGothicStd-Bold";
+	font: 1.33em "RogueAF", "SerifGothicStd-Bold";
+	flex: .33;	
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(2),
+.aurabesh_location_bar .aurabesh_location_bar_details div div:nth-child(2)
+{
+	font: 0.75em "Aurebesh", "SerifGothicStd-Bold";
 	padding-left: .5em;
+	padding-top: .4em;
+	flex: 3;	
+}
+
+/* ============================== Aurebesh Styling - Planet Bar ============================== */
+
+.aurabesh_planet_bar
+{
+	top: 3%;
+	left: 25px;	
+	position: absolute;	
+	width:  25%;
+	height: 66px;
+
+	/* background-color: rgba(0, 0, 0, 0.5); */
+    z-index: 1004;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    min-width: 350px;
+}
+
+
+.aurabesh_planet_bar .aurabesh_location_bar_name
+{
+	color: #ffffff;
+	flex: 2;
+	font: 1.25em "SerifGothicStd-Bold";
+	text-transform: uppercase;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_aurebesh, 
+.aurabesh_planet_bar .aurabesh_location_bar_hrline, 
+.aurabesh_planet_bar .aurabesh_location_bar_details
+{ 
+	color: #B0C4DE; 
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_aurebesh
+{
+	flex: 1;
+	font: 0.66em "Aurebesh", "SerifGothicStd-Bold";
+	text-transform: uppercase;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_hrline
+{
+	/*flex-shrink: 2;*/
+	flex: 1;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details
+{
+	flex: 2;
+	display: flex;
+    flex-direction: row; 
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div
+{
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div:nth-child(4)
+{
+	flex: .75;
+	/*display: flex;
+	flex-direction: row;*/
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div span:nth-child(1),
+.aurabesh_planet_bar .aurabesh_location_bar_details div div:nth-child(1)
+{
+	font: 1.25em "RogueAF", "SerifGothicStd-Bold";
+	flex: .33;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div span:nth-child(2),
+.aurabesh_planet_bar .aurabesh_location_bar_details div div:nth-child(2)
+{
+	font: 0.66em "Aurebesh", "SerifGothicStd-Bold";
+	padding-left: .5em;
+	padding-top: .1em;
+	flex: 3;
 }
