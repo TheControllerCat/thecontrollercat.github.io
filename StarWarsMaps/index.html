@@ -61,6 +61,8 @@
 
 <script>
 
+	// ==================== Aurebesh Popup Size Based On Text Length ====================
+
 	function getPopupLength(psStringLen01)
 	{
 		var returnVal = 0;
@@ -70,13 +72,10 @@
 		return returnVal;
 	}
 
+	// ==================== Aurebesh Popup HTML Builder ====================
 
 	function buildPopup(psLine1, psHexColor01, psIcon01)
 	{
-		/*
-		var returnVal = "<div class='leaflet-popup-content-left' style='color:#"+ psHexColor01 +"'>⥤</div><div class='leaflet-popup-content-right'><span class='leaflet-popup-content-top'><b>"+ psLine1.toUpperCase() +"</b></span><br/><span class='leaflet-popup-content-bottom'>"+ psLine1 +"</span></div>";
-		*/
-
 		var returnVal = "<div class='leaflet-popup-content-left' style='color:#"+ psHexColor01 +"'>"+ psIcon01 +"</div><div class='leaflet-popup-content-right'><p class='leaflet-popup-content-top'><b>"+ psLine1.toUpperCase() +"</b></p><p class='leaflet-popup-content-bottom' style='color:#"+ psHexColor01 +"'>"+ psLine1 +"</p></div>";
 
 		return returnVal;
@@ -108,12 +107,12 @@
 	// define rectangle geographical bounds
 	let districtCoords = 
 	[
-		[[[722.089859, 58.019989], [527.089859, 382.019989]], "Blastech Enclave", 150],
-		[[[731.32782, 420.937256], [555.32782, 773.437256]], "Canal Side Down", 150],
-		[[[398.481552, 211.27726], [280.481552, 471.02726]], "Gunray Bay", 150],
-		[[[674.637161, 892.201172], [472.637161, 1273.701172]], "Hove Tevab Spaceport and Mall", 225],
-		[[[449.381104, 585.153], [309.131104, 878.153]], "Momentis Corporate Center", 225],		
-		[[[263.382973, 935.662415], [134.882973, 1153.662415]], "TTC and HabBlock 1138", 200]
+		[[[722.089859, 58.019989], [527.089859, 382.019989]], "Blastech Enclave"],
+		[[[731.32782, 420.937256], [555.32782, 773.437256]], "Canal Side Down"],
+		[[[398.481552, 211.27726], [280.481552, 471.02726]], "Gunray Bay"],
+		[[[674.637161, 892.201172], [472.637161, 1273.701172]], "Hove Tevab Spaceport and Mall"],
+		[[[449.381104, 585.153], [309.131104, 878.153]], "Momentis Corporate Center"],		
+		[[[263.382973, 935.662415], [134.882973, 1153.662415]], "TTC and HabBlock 1138"]
 	];
 
 	//console.log("districtCoords Length "+ districtCoords.length +"");	
@@ -129,8 +128,6 @@
 			fillOpacity: 0.1, 
 			weight: 1}
 		).addTo(map)
-		//.bindPopup(""+ districtCoords[i][1].toString() +"");
-		//.bindPopup( buildPopup(districtCoords[i][1].toString(), "FFA500"), {minWidth : districtCoords[i][2]} ); ⥬
 		.bindPopup( buildPopup(districtCoords[i][1].toString(), "FFD700", "⥬"), {minWidth : getPopupLength(districtCoords[i][1].toString().length)  } );					
 	}
 
@@ -138,54 +135,54 @@
 /*
 	let locationCoords = 
 	[
-		[[111, 1050], "1"], 
-		[[122, 1060], "2"],
-		[[133, 1070], "3"], 
-		[[144, 1080], "4"], 
-		[[155, 1090], "5"]								  
+		[[111, 1050], "Name1"], 
+		[[122, 1060], "Name2"],
+		[[133, 1070], "Name3"], 
+		[[144, 1080], "Name4"], 
+		[[155, 1090], "Name5"]								  
 	];
 */
 
 	let locationCoords = 
 	[
-		[[585.601151, 227.598511], "BanthaQuik!", 100], 
-		[[671.449997, 168.409286], "Blastech Tri-Tower", 150],
-		[[633.601151, 330.098511], "Corp Sec Peace and Prosperity Station 77", 300], 
-		[[597.601151, 151.598511], "Foundry In-processing", 150],
-		[[537.338837, 102.553146], "Checkpoint 01", 100],
-		[[532.838837, 200.053146], "Checkpoint 02", 100],
-		[[622.838837, 291.053146], "Checkpoint 03", 100],
+		[[585.601151, 227.598511], "BanthaQuik!"], 
+		[[671.449997, 168.409286], "Blastech Tri-Tower"],
+		[[633.601151, 330.098511], "Corp Sec Peace and Prosperity Station 77"], 
+		[[597.601151, 151.598511], "Foundry In-processing"],
+		[[537.338837, 102.553146], "Checkpoint 01"],
+		[[532.838837, 200.053146], "Checkpoint 02"],
+		[[622.838837, 291.053146], "Checkpoint 03"],
 
-		[[680.239998, 515.405769], "Flangth-2-Go", 100],
-		[[643.989998, 712.155769], "Murry’s Garage", 100], 
-		[[601.739998, 557.655769], "Painless Partlove’s Mod Clinic", 250],
-		[[695.239998, 612.405769], "The Trash Compactor Bar", 200], 
-		[[644.989998, 568.405769], "Zippo's Laundrimat and Pawn", 250], 
+		[[680.239998, 515.405769], "Flangth-2-Go"],
+		[[643.989998, 712.155769], "Murry’s Garage"], 
+		[[601.739998, 557.655769], "Painless Partlove’s Mod Clinic"],
+		[[695.239998, 612.405769], "The Trash Compactor Bar"], 
+		[[644.989998, 568.405769], "Zippo's Laundrimat and Pawn"], 
 
-		[[344.775581, 440.469009], "Ethra Brewery", 100],
-		[[306.275581, 400.469009], "ZLPA Freight Yard", 100], 
-		[[353.775581, 288.969009], "Genetech Water Treatment Plant", 250],
-		[[307.275581, 259.469009], "Happy Krill Cannery", 100], 
-		[[325.525581, 358.719009], "Zosoand Lower Port Authority", 250], 
+		[[344.775581, 440.469009], "Ethra Brewery"],
+		[[306.275581, 400.469009], "ZLPA Freight Yard"], 
+		[[353.775581, 288.969009], "Genetech Water Treatment Plant"],
+		[[307.275581, 259.469009], "Happy Krill Cannery"], 
+		[[325.525581, 358.719009], "Zosoand Lower Port Authority"], 
 
-		[[621.388474, 906.809784], "Venture Hiker and Hunter Store", 150],
-		[[573.388474, 1103.809784], "Goodvalor's", 100], 
-		[[639.888474, 1157.809784], "Kuat Galactic Terminal", 150],
-		[[562.888474, 984.309784], "Nutrofit Fitness", 100], 
-		[[529.888474, 1221.809784], "Star Tours Terminal", 100],
-		[[482.888474, 1155.809784], "Lowport Dreyus", 100], 
+		[[621.388474, 906.809784], "Venture Hiker and Hunter Store"],
+		[[573.388474, 1103.809784], "Goodvalor's"], 
+		[[639.888474, 1157.809784], "Kuat Galactic Terminal"],
+		[[562.888474, 984.309784], "Nutrofit Fitness"], 
+		[[529.888474, 1221.809784], "Star Tours Terminal"],
+		[[482.888474, 1155.809784], "Lowport Dreyus"], 
 		
-		[[366, 683.5], "Incom Tower", 100], 
-		[[363, 766], "Sienar-Jaemus Complex", 200], 
-		[[420.5, 745.5], "Skyguard Securities", 150],
-		[[405, 647], "SoroSuub Speaders Dealership", 250], 
-		[[346.5, 732.5], "Startree Tower", 100], 
+		[[366, 683.5], "Incom Tower"], 
+		[[363, 766], "Sienar-Jaemus Complex"], 
+		[[420.5, 745.5], "Skyguard Securities"],
+		[[405, 647], "SoroSuub Speaders Dealership"], 
+		[[346.5, 732.5], "Startree Tower"], 
 
-		[[234.247044, 1121.433426], "Avar Kriss Shrine", 100], 		
-		[[166.997044, 1073.183426], "HabBlock Building 11", 100], 
-		[[219.497044, 1066.933426], "Millennium Entertainments Holotheater", 300],
-		[[167.497044, 945.433426], "Speederpals Deployment Center 581", 250], 
-		[[202.247044, 980.433426], "Transit Ticket Center Authority", 250], 
+		[[234.247044, 1121.433426], "Avar Kriss Shrine"], 		
+		[[166.997044, 1073.183426], "HabBlock Building 11"], 
+		[[219.497044, 1066.933426], "Millennium Entertainments Holotheater"],
+		[[167.497044, 945.433426], "Speederpals Deployment Center 581"], 
+		[[202.247044, 980.433426], "Transit Ticket Center Authority"], 
 											  
 	];
 
@@ -196,11 +193,15 @@
 
 		//console.log("Array Element "+ i +" Length "+ locationCoords[i].length +"");
 
+/*
 		var marker = L
 			.marker(L.latLng(locationCoords[i][0]))
 			.addTo(map)
-			//.bindPopup("✧  "+ locationCoords[i][1].toString() +"");
-			//.bindPopup( buildPopup(locationCoords[i][1].toString(), "00ff00"), {minWidth : locationCoords[i][2]} );
+			.bindPopup( buildPopup(locationCoords[i][1].toString(), "00ff00", "⥤"), {minWidth : getPopupLength(locationCoords[i][1].toString().length)  } );
+*/
+
+		L.marker(L.latLng(locationCoords[i][0]))
+			.addTo(map)
 			.bindPopup( buildPopup(locationCoords[i][1].toString(), "00ff00", "⥤"), {minWidth : getPopupLength(locationCoords[i][1].toString().length)  } );
 
 		console.log("Name: "+ locationCoords[i][1].toString() +", String Length: "+ locationCoords[i][1].toString().length +", Calculated Length: "+ getPopupLength(locationCoords[i][1].toString().length) + "");
