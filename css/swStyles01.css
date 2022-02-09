@@ -8,6 +8,48 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'SerifGothicStd-Black';
+    src:url('serifgothicstd27357/SerifGothicStd-Black.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SerifGothicStd-Bold';
+    src:url('serifgothicstd27357/SerifGothicStd-Bold.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SerifGothicStd-ExtraBold';
+    src:url('serifgothicstd27357/SerifGothicStd-ExtraBold.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SerifGothicStd-Light';
+    src:url('serifgothicstd27357/SerifGothicStd-Light.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SerifGothicStd';
+    src:url('serifgothicstd27357/SerifGothicStd.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RogueAF';
+    src:url('RogueAF/RogueAF.otf') format('opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
 #map 
 { 
 	/* height: 180px; */
@@ -42,7 +84,7 @@ html, body
 
 .leaflet-popup-content
 {	
-	margin: 5px 15px 5px 10px;
+	margin: 7px 15px 5px 10px;
 	/*display: flex;*/
 	overflow: hidden;
 
@@ -68,18 +110,25 @@ html, body
 {
 	width: 25px;
 	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
-	/*flex: .25;*/
 	font-size: large;
 	font-weight: bolder;
     padding-top: 0.2em;	
-    /*color: #00ff00;*/
 }
 
 .leaflet-popup-content-right
 {
 	width: 84%;
-	/*flex: 1;*/
+}
 
+.leaflet-popup-content-top, .leaflet-popup-content-bottom, .leaflet-popup-content p 
+{
+	padding: 0px;
+	margin: 0px;
+}	
+
+.leaflet-popup-content-top b
+{
+	font: 12px/1.5 "SerifGothicStd-Bold";
 }
 
 .leaflet-popup-content-bottom
@@ -87,4 +136,132 @@ html, body
 
 	font-family: 'Aurebesh';
 	font-size:  5.5pt;
+}
+
+.aurabesh_bottom_bar
+{
+	width:  100%;
+	height: 50px;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+    z-index: 1001;
+    font: 1em/1.5 "Aurebesh", "SerifGothicStd-Bold";
+    color: #ffffff;
+    display: flex;
+    flex-direction: row; 
+}
+
+.aurabesh_bottom_bar_child
+{
+	text-align: center;
+	margin: auto;
+}
+
+.aurabesh_bottom_bar_child_1
+{
+	flex: 1;
+}
+
+.aurabesh_bottom_bar_child_2
+{
+	flex: 2;
+}
+
+.aurabesh_bottom_bar_child span:nth-child(1)
+{
+	font: 1.33em/1.5 "RogueAF", "SerifGothicStd-Bold";
+}
+
+.aurabesh_bottom_bar_child span:nth-child(2)
+{
+	font: 1em/1.5 "Aurebesh", "SerifGothicStd-Bold";
+}
+
+.aurabesh_bottom_bar_child_empty
+{
+	flex: 3;
+}
+
+.aurabesh_location_bar
+{
+	bottom: 75px;
+	left: 25px;	
+	position: absolute;	
+	width:  33%;
+	height: 75px;
+
+	/* background-color: rgba(0, 0, 0, 0.5); */
+    z-index: 1003;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.aurabesh_location_bar div
+{
+
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_name
+{
+	color: #ffffff;
+	flex: 2;
+	font: 2.5em/1.5 "SerifGothicStd-Bold";
+	text-transform: uppercase;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_aurebesh, 
+.aurabesh_location_bar .aurabesh_location_bar_hrline, 
+.aurabesh_location_bar .aurabesh_location_bar_details
+{ 
+	color: #B0C4DE; 
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_aurebesh
+{
+	flex: 2;
+	font: 0.99em/1.5 "Aurebesh", "SerifGothicStd-Bold";
+	text-transform: uppercase;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_hrline
+{
+	/*flex-shrink: 2;*/
+	flex: 1;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_hrline hr
+{
+	margin: 0px;
+	padding: 0px;
+	width:10%;
+	height:4px;
+	color:#B0C4DE;
+	background-color:#B0C4DE;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details
+{
+	flex: 2;
+	display: flex;
+    flex-direction: row; 
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div
+{
+	flex: 1;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(1)
+{
+	font: 1.0em/1.5 "RogueAF", "SerifGothicStd-Bold";
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(2)
+{
+	font: 0.75em/1.5 "Aurebesh", "SerifGothicStd-Bold";
+	padding-left: .5em;
 }

@@ -18,7 +18,32 @@
 </head>	
 <body>
 
-<div id='map'></div>
+<div id='map'>
+
+
+	<div class="aurabesh_location_bar">
+		<div class="aurabesh_location_bar_name">Zosoand Lower</div>
+		<div class="aurabesh_location_bar_aurebesh">Zosoand Lower</div>
+		<!--- <div class="aurabesh_location_bar_hrline"><hr/></div> --->
+		<div class="aurabesh_location_bar_hrline">-----</div>
+		<div class="aurabesh_location_bar_details">
+			<div class="aurabesh_location_bar_details_01"><span>m</span><span>Explored</span></div>
+			<div class="aurabesh_location_bar_details_02"><span>m</span><span>Chests</span></div>
+			<div class="aurabesh_location_bar_details_03"><span>m</span><span>Secrets</span></div>
+		</div>
+	</div>
+
+	<div class="aurabesh_bottom_bar">
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>c/d</span>&nbsp;<span>Zoom</span></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>I</span>&nbsp;<span>Move</span></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>H</span>&nbsp;<span>Rotate</span></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>P</span>&nbsp;<span>Recenter</span></div>
+		<div class="aurabesh_bottom_bar_child_empty">&nbsp;</div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_2"><span>s</span>&nbsp;<span>Other planets</span></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>t</span>&nbsp;<span>Close</span></div>
+	</div>	
+
+</div>
 
 <script>
 
@@ -26,7 +51,7 @@
 	{
 		var returnVal = 0;
 
-		returnVal = psStringLen01 * 8;
+		returnVal = psStringLen01 * 9;
 
 		return returnVal;
 	}
@@ -34,7 +59,11 @@
 
 	function buildPopup(psLine1, psHexColor01)
 	{
-		var returnVal = "<div class='leaflet-popup-content-left' style='color:#"+ psHexColor01 +"'>⥤</div><div class='leaflet-popup-content-right'><span class='leaflet-popup-content-top'><b>"+ psLine1 +"</b></span><br/><span class='leaflet-popup-content-bottom'>"+ psLine1 +"</span></div>";
+		/*
+		var returnVal = "<div class='leaflet-popup-content-left' style='color:#"+ psHexColor01 +"'>⥤</div><div class='leaflet-popup-content-right'><span class='leaflet-popup-content-top'><b>"+ psLine1.toUpperCase() +"</b></span><br/><span class='leaflet-popup-content-bottom'>"+ psLine1 +"</span></div>";
+		*/
+
+		var returnVal = "<div class='leaflet-popup-content-left' style='color:#"+ psHexColor01 +"'>⥤</div><div class='leaflet-popup-content-right'><p class='leaflet-popup-content-top'><b>"+ psLine1.toUpperCase() +"</b></p><p class='leaflet-popup-content-bottom'>"+ psLine1 +"</p></div>";
 
 		return returnVal;
 	}
@@ -71,7 +100,7 @@
 		[[[722.089859, 58.019989], [527.089859, 382.019989]], "Blastech Enclave", 150],
 		[[[731.32782, 420.937256], [555.32782, 773.437256]], "Canal Side Down", 150],
 		[[[398.481552, 211.27726], [280.481552, 471.02726]], "Gunray Bay", 150],
-		[[[674.637161, 892.201172], [472.637161, 1273.701172]], "Hove Tevab Spaceport & Mall", 225],
+		[[[674.637161, 892.201172], [472.637161, 1273.701172]], "Hove Tevab Spaceport and Mall", 225],
 		[[[449.381104, 585.153], [309.131104, 878.153]], "Momentis Corporate Center", 225],		
 		[[[263.382973, 935.662415], [134.882973, 1153.662415]], "TTC & HabBlock 1138", 200]
 	];
@@ -90,7 +119,8 @@
 			weight: 1}
 		).addTo(map)
 		//.bindPopup(""+ districtCoords[i][1].toString() +"");
-		.bindPopup( buildPopup(districtCoords[i][1].toString(), "FFA500"), {minWidth : districtCoords[i][2]} );			
+		//.bindPopup( buildPopup(districtCoords[i][1].toString(), "FFA500"), {minWidth : districtCoords[i][2]} );
+		.bindPopup( buildPopup(districtCoords[i][1].toString(), "FFA500"), {minWidth : getPopupLength(districtCoords[i][1].toString().length)  } );					
 	}
 
 	// ==================== Location Markers ====================
@@ -169,13 +199,32 @@
 </script>
 
 <!---
-"<div class='leaflet-popup-content-left'>
-	<span>⥤</span>
+
+<div class="aurabesh_bottom_bar">
+	<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>c/d</span>&nbsp;<span>Zoom</span></div>
+	<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>I</span>&nbsp;<span>Move</span></div>
+	<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>H</span>&nbsp;<span>Rotate</span></div>
+	<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>P</span>&nbsp;<span>Recenter</span></div>
+	<div class="aurabesh_bottom_bar_child_empty">&nbsp;</div>
+	<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_2"><span>s</span>&nbsp;<span>Other planets</span></div>
+	<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><span>t</span>&nbsp;<span>Close</span></div>
 </div>
-<div class='leaflet-popup-content-left'>
-	<span class='leaflet-popup-content-top'><b>Hello world!</b></span><br/>
-	<span class='leaflet-popup-content-bottom'>I am a popup.</span>
-</div>"
+
+
+
+<div class="aurabesh_location_bar">
+	<div class="aurabesh_location_bar_name">Location Name</div>
+	<div class="aurabesh_location_bar_aurebesh">Location Name Aurebesh</div>
+	<div class="aurabesh_location_bar_hrline"><hr/></div>
+	<div class="aurabesh_location_bar_details">
+		<div><span></span><span></span></div>
+		<div><span></span><span></span></div>
+		<div><span></span><span></span></div>
+	</div>
+</div>
+
+<div class="aurabesh_planet_bar">
+</div>
 --->
 
 </body>
