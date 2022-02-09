@@ -79,7 +79,16 @@ html, body
 
 .leaflet-top
 {
-	top:  37%;	
+	top:  40%;	
+}
+
+.leaflet-top .leaflet-control 
+{
+    margin-top: 0px;
+}
+
+.leaflet-left .leaflet-control {
+    margin-left: 20px;
 }
 
 .leaflet-touch .leaflet-bar a:first-child 
@@ -228,6 +237,192 @@ html, body
 	font-size:  5.5pt;
 }
 
+/* ============================== Aurebesh Styling - Planet Bar ============================== */
+
+.aurabesh_planet_bar
+{
+	top: 4%;
+	left: 25px;	
+	position: absolute;	
+	width:  25%;
+	height: 55px;
+
+	/* background-color: rgba(0, 0, 0, 0.5); */
+    z-index: 1004;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    min-width: 350px;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_name
+{
+	color: #ffffff;
+	flex: .5;
+	font: 1.33em "SerifGothicStd-Bold";
+	text-transform: uppercase;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_aurebesh, 
+.aurabesh_planet_bar .aurabesh_location_bar_hrline, 
+.aurabesh_planet_bar .aurabesh_location_bar_details
+{ 
+	color: #B0C4DE; 
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_aurebesh
+{
+	flex: .5	;
+	font: 0.75em "Aurebesh", "SerifGothicStd-Bold";
+	text-transform: uppercase;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_hrline
+{
+	flex: .5;
+	line-height: .75em;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details
+{
+	flex: 2;
+	display: flex;
+    flex-direction: row; 
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div
+{
+	
+	display: flex;
+	flex-direction: row;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div:nth-child(1)
+{
+	flex: 1;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div:nth-child(2),
+.aurabesh_planet_bar .aurabesh_location_bar_details div:nth-child(3)
+{
+	flex: 1.25;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div:nth-child(4)
+{
+	flex: .75;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div span:nth-child(1),
+.aurabesh_planet_bar .aurabesh_location_bar_details div div:nth-child(1)
+{
+	font: 1.25em "RogueAF", "SerifGothicStd-Bold";
+	flex: .33;
+	margin: auto;
+}
+
+.aurabesh_planet_bar .aurabesh_location_bar_details div span:nth-child(2),
+.aurabesh_planet_bar .aurabesh_location_bar_details div div:nth-child(2)
+{
+	font: 0.66em "Aurebesh", "SerifGothicStd-Bold";
+	padding-left: .5em;
+	flex: 3;
+	margin: auto;
+}
+
+/* ============================== Aurebesh Styling - Location Bar ============================== */
+
+.aurabesh_location_bar
+{
+	bottom: 66px;
+	left: 25px;	
+	position: absolute;	
+	width:  33%;
+	height: 66px;
+
+	/* background-color: rgba(0, 0, 0, 0.5); */
+    z-index: 1003;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    min-width: 450px;
+}
+
+.aurabesh_location_bar div
+{
+
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_name
+{
+	color: #ffffff;
+	flex: 2;
+	font: 2.15em "SerifGothicStd-Bold";
+	text-transform: uppercase;
+	line-height: .85em;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_aurebesh, 
+.aurabesh_location_bar .aurabesh_location_bar_hrline, 
+.aurabesh_location_bar .aurabesh_location_bar_details
+{ 
+	color: #B0C4DE; 
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_aurebesh
+{
+	flex: 1;
+	font: 0.95em "Aurebesh", "SerifGothicStd-Bold";
+	text-transform: uppercase;
+	line-height: 1.33em;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_hrline
+{
+	flex: .5;
+	line-height: 1em;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details
+{
+	flex: 1;
+	display: flex;
+    flex-direction: row; 
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div
+{
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div:nth-child(4)
+{
+	flex: 1.75;
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(1),
+.aurabesh_location_bar .aurabesh_location_bar_details div div:nth-child(1)
+{
+	font: 1.5em "RogueAF", "SerifGothicStd-Bold";
+	flex: .33;
+	margin: auto;	
+}
+
+.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(2),
+.aurabesh_location_bar .aurabesh_location_bar_details div div:nth-child(2)
+{
+	font: 0.8em "Aurebesh", "SerifGothicStd-Bold";
+	padding-left: .5em;
+	flex: 3;
+	margin: auto;
+}
+
 /* ============================== Aurebesh Styling - Bottom Bar ============================== */
 
 .aurabesh_bottom_bar
@@ -280,6 +475,7 @@ html, body
 	font: 1.5em "RogueAF", "SerifGothicStd-Bold";
 	flex: .33;
 	line-height: .75;
+	margin: auto;
 }
 
 .aurabesh_bottom_bar_child span:nth-child(2),
@@ -289,180 +485,5 @@ html, body
 	flex: 2;
 	text-align: left;
 	padding-left: .25em;
-}
-
-
-
-/* ============================== Aurebesh Styling - Location Bar ============================== */
-
-.aurabesh_location_bar
-{
-	bottom: 66px;
-	left: 25px;	
-	position: absolute;	
-	width:  33%;
-	height: 75px;
-
-	/* background-color: rgba(0, 0, 0, 0.5); */
-    z-index: 1003;
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-    min-width: 450px;
-}
-
-.aurabesh_location_bar div
-{
-
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_name
-{
-	color: #ffffff;
-	flex: 2;
-	font: 2.15em "SerifGothicStd-Bold";
-	text-transform: uppercase;
-	line-height: .85em;
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_aurebesh, 
-.aurabesh_location_bar .aurabesh_location_bar_hrline, 
-.aurabesh_location_bar .aurabesh_location_bar_details
-{ 
-	color: #B0C4DE; 
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_aurebesh
-{
-	flex: 1;
-	font: 0.99em "Aurebesh", "SerifGothicStd-Bold";
-	text-transform: uppercase;
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_hrline
-{
-	flex: .5;
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_details
-{
-	flex: 1;
-	display: flex;
-    flex-direction: row; 
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_details div
-{
-	flex: 1;
-	display: flex;
-	flex-direction: row;
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_details div:nth-child(4)
-{
-	flex: 2;
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(1),
-.aurabesh_location_bar .aurabesh_location_bar_details div div:nth-child(1)
-{
-	font: 1.33em "RogueAF", "SerifGothicStd-Bold";
-	flex: .33;	
-}
-
-.aurabesh_location_bar .aurabesh_location_bar_details div span:nth-child(2),
-.aurabesh_location_bar .aurabesh_location_bar_details div div:nth-child(2)
-{
-	font: 0.75em "Aurebesh", "SerifGothicStd-Bold";
-	padding-left: .5em;
-	padding-top: .4em;
-	flex: 3;	
-}
-
-/* ============================== Aurebesh Styling - Planet Bar ============================== */
-
-.aurabesh_planet_bar
-{
-	top: 3%;
-	left: 25px;	
-	position: absolute;	
-	width:  25%;
-	height: 66px;
-
-	/* background-color: rgba(0, 0, 0, 0.5); */
-    z-index: 1004;
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-    min-width: 350px;
-}
-
-
-.aurabesh_planet_bar .aurabesh_location_bar_name
-{
-	color: #ffffff;
-	flex: 2;
-	font: 1.25em "SerifGothicStd-Bold";
-	text-transform: uppercase;
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_aurebesh, 
-.aurabesh_planet_bar .aurabesh_location_bar_hrline, 
-.aurabesh_planet_bar .aurabesh_location_bar_details
-{ 
-	color: #B0C4DE; 
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_aurebesh
-{
-	flex: 1;
-	font: 0.66em "Aurebesh", "SerifGothicStd-Bold";
-	text-transform: uppercase;
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_hrline
-{
-	/*flex-shrink: 2;*/
-	flex: 1;
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_details
-{
-	flex: 2;
-	display: flex;
-    flex-direction: row; 
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_details div
-{
-	flex: 1;
-	display: flex;
-	flex-direction: row;
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_details div:nth-child(4)
-{
-	flex: .75;
-	/*display: flex;
-	flex-direction: row;*/
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_details div span:nth-child(1),
-.aurabesh_planet_bar .aurabesh_location_bar_details div div:nth-child(1)
-{
-	font: 1.25em "RogueAF", "SerifGothicStd-Bold";
-	flex: .33;
-}
-
-.aurabesh_planet_bar .aurabesh_location_bar_details div span:nth-child(2),
-.aurabesh_planet_bar .aurabesh_location_bar_details div div:nth-child(2)
-{
-	font: 0.66em "Aurebesh", "SerifGothicStd-Bold";
-	padding-left: .5em;
-	padding-top: .1em;
-	flex: 3;
+	margin: auto;
 }
