@@ -150,7 +150,8 @@ html, body
 	border-style: solid;
 	border-color: #ffffff;
 	border-width: 0px 2px 0px 2px;
-	}
+
+}
 
 .leaflet-touch .leaflet-bar a:nth-child(1) 
 {
@@ -160,6 +161,11 @@ html, body
 .leaflet-touch .leaflet-bar a:nth-child(2) 
 {
 	border-bottom: 2px solid #ffffff;
+}
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar 
+{
+    border: none;
 }
 
 /* ============================== Popup Styling ============================== */
