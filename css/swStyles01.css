@@ -82,13 +82,21 @@ html, body
 	top:  40%;	
 }
 
+.leaflet-left 
+{
+    right: 0;
+    left: unset;
+}
+
 .leaflet-top .leaflet-control 
 {
     margin-top: 0px;
 }
 
-.leaflet-left .leaflet-control {
-    margin-left: 20px;
+.leaflet-left .leaflet-control 
+{
+    /* margin-left: 20px; */
+    margin-right: 20px; 
 }
 
 .leaflet-touch .leaflet-bar a:first-child 

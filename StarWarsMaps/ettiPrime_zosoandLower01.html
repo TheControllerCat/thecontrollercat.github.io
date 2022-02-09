@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="//db.onlinewebfonts.com/c/591a1311200119eefe5df87892d876be?family=Aurebesh" rel="stylesheet" type="text/css"/>
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/swStyles01.css" />
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>	
+
+
+</head>	
+<body>
+
+<div id='map'>
+
+
+	<div class="aurabesh_planet_bar">
+		<div class="aurabesh_location_bar_name">Etti Prime</div>
+		<div class="aurabesh_location_bar_aurebesh">Etti Prime</div>
+		<div class="aurabesh_location_bar_hrline">-----</div>
+		<div class="aurabesh_location_bar_details">
+			<div class="aurabesh_location_bar_details_01"><div>F</div><div>Outer Rim</div></div>
+			<div class="aurabesh_location_bar_details_02"><div>E</div><div>Corp Sector</div></div>
+			<div class="aurabesh_location_bar_details_03"><div>G</div><div>Etti System</div></div>
+			<div class="aurabesh_location_bar_details_04"></div>
+		</div>		
+	</div>
+
+
+	<div class="aurabesh_location_bar">
+		<div class="aurabesh_location_bar_name">Zosoand Lower</div>
+		<div class="aurabesh_location_bar_aurebesh">Zosoand Lower</div>
+		<div class="aurabesh_location_bar_hrline">-----</div>
+		<div class="aurabesh_location_bar_details">
+			<div class="aurabesh_location_bar_details_01"><div>m</div><div>Explored</div></div>
+			<div class="aurabesh_location_bar_details_02"><div>m</div><div>Districts</div></div>
+			<div class="aurabesh_location_bar_details_03"><div>m</div><div>Locations</div></div>
+			<div class="aurabesh_location_bar_details_04"></div>
+		</div>
+	</div>
+
+	<div class="aurabesh_bottom_bar">
+		<div class="aurabesh_bottom_bar_child_emptySmall"></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><div>c/d</div><div>Zoom</div></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><div>I</div><div>Move</div></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><div>H</div><div>Rotate</div></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><div>P</div><div>Recenter</div></div>
+		<div class="aurabesh_bottom_bar_child_empty"></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_2"><div>s</div><div>Other planets</div></div>
+		<div class="aurabesh_bottom_bar_child aurabesh_bottom_bar_child_1"><div>t</div><div>Close</div></div>
+	</div>	
+
+</div>
+
+<script>
+
+	function getPopupLength(psStringLen01)
+	{
+		var returnVal = 0;
+
+		returnVal = Math.round(psStringLen01 * 8.5);
+
+		return returnVal;
+	}
+
+
+	function buildPopup(psLine1, psHexColor01, psIcon01)
+	{
+		/*
+		var returnVal = "<div class='leaflet-popup-content-left' style='color:#"+ psHexColor01 +"'>⥤</div><div class='leaflet-popup-content-right'><span class='leaflet-popup-content-top'><b>"+ psLine1.toUpperCase() +"</b></span><br/><span class='leaflet-popup-content-bottom'>"+ psLine1 +"</span></div>";
+		*/
+
+		var returnVal = "<div class='leaflet-popup-content-left' style='color:#"+ psHexColor01 +"'>"+ psIcon01 +"</div><div class='leaflet-popup-content-right'><p class='leaflet-popup-content-top'><b>"+ psLine1.toUpperCase() +"</b></p><p class='leaflet-popup-content-bottom' style='color:#"+ psHexColor01 +"'>"+ psLine1 +"</p></div>";
+
+		return returnVal;
+	}
+
+	// ==================== Define and Build Map ====================
+
+	var map = L.map('map', {
+		crs: L.CRS.Simple
+	});
+
+	var bounds = [[0, 0], [750, 1500]];
+	var image = L.imageOverlay('Etti_Zosoand_All_Map01.png', bounds).addTo(map);
+
+	map.fitBounds(bounds);
+
+	// ==================== Debugging ====================
+
+	map.on('click', 
+	function(e){
+		var coord = e.latlng.toString().split(',');
+		var lat = coord[0].split('(');
+		var lng = coord[1].split(')');
+		console.log("You clicked the map at latitude: " + lat[1] + " and longitude:" + lng[0]);
+	});	
+
+	// ==================== District Markers ====================
+
+	// define rectangle geographical bounds
+	let districtCoords = 
+	[
+		[[[722.089859, 58.019989], [527.089859, 382.019989]], "Blastech Enclave", 150],
+		[[[731.32782, 420.937256], [555.32782, 773.437256]], "Canal Side Down", 150],
+		[[[398.481552, 211.27726], [280.481552, 471.02726]], "Gunray Bay", 150],
+		[[[674.637161, 892.201172], [472.637161, 1273.701172]], "Hove Tevab Spaceport and Mall", 225],
+		[[[449.381104, 585.153], [309.131104, 878.153]], "Momentis Corporate Center", 225],		
+		[[[263.382973, 935.662415], [134.882973, 1153.662415]], "TTC and HabBlock 1138", 200]
+	];
+
+	//console.log("districtCoords Length "+ districtCoords.length +"");	
+
+	for (let i = 0; i < districtCoords.length; i++) 
+	{
+
+		//console.log("Array Element "+ i +" Length: "+ districtCoords[i].length +", Name: "+ districtCoords[i][1].toString() +"" );
+
+		L.rectangle(districtCoords[i][0], {
+			color: "#ff7800",
+			fillColor: '#ff7800',
+			fillOpacity: 0.1, 
+			weight: 1}
+		).addTo(map)
+		//.bindPopup(""+ districtCoords[i][1].toString() +"");
+		//.bindPopup( buildPopup(districtCoords[i][1].toString(), "FFA500"), {minWidth : districtCoords[i][2]} ); ⥬
+		.bindPopup( buildPopup(districtCoords[i][1].toString(), "FFD700", "⥬"), {minWidth : getPopupLength(districtCoords[i][1].toString().length)  } );					
+	}
+
+	// ==================== Location Markers ====================
+/*
+	let locationCoords = 
+	[
+		[[111, 1050], "1"], 
+		[[122, 1060], "2"],
+		[[133, 1070], "3"], 
+		[[144, 1080], "4"], 
+		[[155, 1090], "5"]								  
+	];
+*/
+
+	let locationCoords = 
+	[
+		[[585.601151, 227.598511], "BanthaQuik!", 100], 
+		[[671.449997, 168.409286], "Blastech Tri-Tower", 150],
+		[[633.601151, 330.098511], "Corp Sec Peace and Prosperity Station 77", 300], 
+		[[597.601151, 151.598511], "Foundry In-processing", 150],
+		[[537.338837, 102.553146], "Checkpoint 01", 100],
+		[[532.838837, 200.053146], "Checkpoint 02", 100],
+		[[622.838837, 291.053146], "Checkpoint 03", 100],
+
+		[[680.239998, 515.405769], "Flangth-2-Go", 100],
+		[[643.989998, 712.155769], "Murry’s Garage", 100], 
+		[[601.739998, 557.655769], "Painless Partlove’s Mod Clinic", 250],
+		[[695.239998, 612.405769], "The Trash Compactor Bar", 200], 
+		[[644.989998, 568.405769], "Zippo's Laundrimat and Pawn", 250], 
+
+		[[344.775581, 440.469009], "Ethra Brewery", 100],
+		[[306.275581, 400.469009], "ZLPA Freight Yard", 100], 
+		[[353.775581, 288.969009], "Genetech Water Treatment Plant", 250],
+		[[307.275581, 259.469009], "Happy Krill Cannery", 100], 
+		[[325.525581, 358.719009], "Zosoand Lower Port Authority", 250], 
+
+		[[621.388474, 906.809784], "Venture Hiker and Hunter Store", 150],
+		[[573.388474, 1103.809784], "Goodvalor's", 100], 
+		[[639.888474, 1157.809784], "Kuat Galactic Terminal", 150],
+		[[562.888474, 984.309784], "Nutrofit Fitness", 100], 
+		[[529.888474, 1221.809784], "Star Tours Terminal", 100],
+		[[482.888474, 1155.809784], "Lowport Dreyus", 100], 
+		
+		[[366, 683.5], "Incom Tower", 100], 
+		[[363, 766], "Sienar-Jaemus Complex", 200], 
+		[[420.5, 745.5], "Skyguard Securities", 150],
+		[[405, 647], "SoroSuub Speaders Dealership", 250], 
+		[[346.5, 732.5], "Startree Tower", 100], 
+
+		[[234.247044, 1121.433426], "Avar Kriss Shrine", 100], 		
+		[[166.997044, 1073.183426], "HabBlock Building 11", 100], 
+		[[219.497044, 1066.933426], "Millennium Entertainments Holotheater", 300],
+		[[167.497044, 945.433426], "Speederpals Deployment Center 581", 250], 
+		[[202.247044, 980.433426], "Transit Ticket Center Authority", 250], 
+											  
+	];
+
+	//console.log("Array Length "+ locationCoords.length +"");	
+
+	for (let i = 0; i < locationCoords.length; i++) 
+	{
+
+		//console.log("Array Element "+ i +" Length "+ locationCoords[i].length +"");
+
+		var marker = L
+			.marker(L.latLng(locationCoords[i][0]))
+			.addTo(map)
+			//.bindPopup("✧  "+ locationCoords[i][1].toString() +"");
+			//.bindPopup( buildPopup(locationCoords[i][1].toString(), "00ff00"), {minWidth : locationCoords[i][2]} );
+			.bindPopup( buildPopup(locationCoords[i][1].toString(), "00ff00", "⥤"), {minWidth : getPopupLength(locationCoords[i][1].toString().length)  } );
+
+		console.log("Name: "+ locationCoords[i][1].toString() +", String Length: "+ locationCoords[i][1].toString().length +", Calculated Length: "+ getPopupLength(locationCoords[i][1].toString().length) + "");
+	}
+
+
+</script>
+
+
+</body>
+</html>
